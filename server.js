@@ -1,10 +1,11 @@
 const net = require('net');
 const chatApp = require('./chat-module');
-
-
 const chat = new chatApp();
+const port = 65000;
+
 
 const server = net.createServer(client => {
+    
     client.setEncoding('utf-8');
     console.log('Client was connected');
     client.write('Hello');
@@ -24,8 +25,6 @@ const server = net.createServer(client => {
         console.log('Client disconnected');
     })
 });
-
-const port = 65000;
 
 server.listen(port, error => {
     if(error) {
