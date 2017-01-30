@@ -4,14 +4,14 @@ const chatApp = require('./chat-module');
 
 const chat = new chatApp();
 
-const server = net.createServer(client =>{
+const server = net.createServer(client => {
     client.setEncoding('utf-8');
     console.log('Client was connected');
     client.write('Hello');
     chat.add(client);
 
-    client.on('data', message =>{
-        if(message.startsWith('/nick')){
+    client.on('data', message => {
+        if(message.startsWith('/nick')) {
             chat.rename(client, message);
             console.log(client.nick);
         } else {
@@ -28,7 +28,7 @@ const server = net.createServer(client =>{
 const port = 65000;
 
 server.listen(port, error => {
-    if(error){
+    if(error) {
     console.log('You done got an error', error);
     }
 });

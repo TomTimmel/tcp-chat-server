@@ -1,6 +1,6 @@
 
 module.exports = class ChatApp {
-    constructor(){
+    constructor() {
         this.id = 1;
         this.clients = [];
     }
@@ -12,7 +12,7 @@ module.exports = class ChatApp {
 
     send(sender, message) {
         this.clients.forEach(client => {
-            if(client !== sender){
+            if(client !== sender) {
                 let timeStamp = new Date().getHours() + ':' + new Date().getMinutes() + ':' + new Date().getSeconds();
                 client.write(`${timeStamp} ${sender.nick}: ${message}`);
             }
@@ -24,8 +24,8 @@ module.exports = class ChatApp {
         if (index !== -1) this.clients.splice(index, 1);
     }
 
-    rename(client, nickname){
-        if(nickname){
+    rename(client, nickname) {
+        if(nickname) {
             nickname = nickname.replace('/nick ', '');
             client.nick = nickname;
         }
